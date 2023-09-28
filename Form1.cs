@@ -126,19 +126,13 @@ namespace WinForm_ControlsAndGraphics
         private void DrawCord(PaintEventArgs e,int goodsNumber)
         {
             e.Graphics.DrawLine(new Pen(Color.White, 2), new Point(100, 25), new Point(100, 500));
-            e.Graphics.DrawLine(new Pen(Color.White, 2), new Point(75, 25), new Point(100, 25));
-            e.Graphics.DrawLine(new Pen(Color.Gray, 2), new Point(100, 25), new Point(875, 25));
-            e.Graphics.DrawString(goodsNumber.ToString(), new Font("Arial", 12), new SolidBrush(Color.White), new Point(60, 5));
-            e.Graphics.DrawLine(new Pen(Color.White, 2), new Point(75, 138), new Point(100, 138));
-            e.Graphics.DrawLine(new Pen(Color.Gray, 2), new Point(100, 138), new Point(875, 138));
-            e.Graphics.DrawString(Convert.ToInt32(goodsNumber * 0.75).ToString(), new Font("Arial", 12), new SolidBrush(Color.White), new Point(60, 118));
-            e.Graphics.DrawLine(new Pen(Color.White, 2), new Point(75, 250), new Point(100, 250));
-            e.Graphics.DrawLine(new Pen(Color.Gray, 2), new Point(100, 250), new Point(875, 250));
-            e.Graphics.DrawString(Convert.ToInt32(goodsNumber * 0.50).ToString(), new Font("Arial", 12), new SolidBrush(Color.White), new Point(60, 230));
-            e.Graphics.DrawLine(new Pen(Color.White, 2), new Point(75, 362), new Point(100, 362));
-            e.Graphics.DrawLine(new Pen(Color.Gray, 2), new Point(100, 362), new Point(875, 362));
-            e.Graphics.DrawString(Convert.ToInt32(goodsNumber * 0.25).ToString(), new Font("Arial", 12), new SolidBrush(Color.White), new Point(60, 332));
             e.Graphics.DrawLine(new Pen(Color.White, 2), new Point(75, 475), new Point(875, 475));
+            for(int i = 0; i < 4; i++)
+            {
+                e.Graphics.DrawLine(new Pen(Color.White, 2), new Point(75, 25 + (int)(112.5*i)), new Point(100, 25 + (int)(112.5 * i)));
+                e.Graphics.DrawLine(new Pen(Color.Gray, 2), new Point(100, 25 + (int)(112.5 * i)), new Point(875, 25 + (int)(112.5 * i)));
+                e.Graphics.DrawString(Convert.ToInt32(goodsNumber * (1 - (i*0.25))).ToString(), new Font("Arial", 12), new SolidBrush(Color.White), new Point(60, 5 + (int)(112.5 * i)));
+            }
             e.Graphics.DrawString(0.ToString(), new Font("Arial", 12), new SolidBrush(Color.White), new Point(60, 455));
         }
         private void DrawDiagram(PaintEventArgs e, Point point, Brush brush, int h, List<string> goods, int iter,List<int> valuesOfNumberOfGoods)
